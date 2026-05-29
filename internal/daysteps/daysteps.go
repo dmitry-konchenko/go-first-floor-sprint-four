@@ -57,7 +57,6 @@ func DayActionInfo(data string, weight, height float64) string {
 		log.Println("Ошибка парсинга программы", err)
 		return ""
 	}
-	// не особо понимаю зачем вторая проверка на шаги
 	if steps <= 0 {
 		log.Println("Ошибка колличества шагов", ErrNegativeSteps)
 		return ""
