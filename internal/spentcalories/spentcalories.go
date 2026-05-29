@@ -39,7 +39,7 @@ func parseTraining(data string) (int, string, time.Duration, error) {
 	if err != nil {
 		return 0, "", 0, ErrInvalidSteps
 	}
-	if steps < 0 {
+	if steps <= 0 {
 		return 0, "", 0, ErrNegativeSteps
 	}
 	activity := parts[1]
@@ -110,7 +110,7 @@ func TrainingInfo(data string, weight, height float64) (string, error) {
 
 // RunningSpentCalories вычисляет количество калорий, потраченных при беге
 func RunningSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
-	if steps < 0 {
+	if steps <= 0 {
 		return 0, ErrNegativeSteps
 	}
 	if weight <= 0 {
@@ -130,7 +130,7 @@ func RunningSpentCalories(steps int, weight, height float64, duration time.Durat
 
 // WalkingSpentCalories вычисляет количество калорий, потраченных при ходьбе
 func WalkingSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
-	if steps < 0 {
+	if steps <= 0 {
 		return 0, ErrNegativeSteps
 	}
 	if weight <= 0 {

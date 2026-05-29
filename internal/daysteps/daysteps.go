@@ -66,6 +66,7 @@ func DayActionInfo(data string, weight, height float64) string {
 	calories, err := sc.WalkingSpentCalories(steps, weight, height, duration)
 	if err != nil {
 		fmt.Println("Ошибка вычисления затраченных калорий", err)
+		return ""
 	}
 	answer := fmt.Sprintf("Количество шагов: %d.\nДистанция составила %.2f км.\nВы сожгли %.2f ккал.\n",
 		steps, distanceKm, calories)
