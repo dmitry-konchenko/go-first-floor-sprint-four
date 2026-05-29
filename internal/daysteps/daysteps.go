@@ -3,6 +3,7 @@ package daysteps
 import (
 	"errors"
 	"fmt"
+	"log"
 	"strconv"
 	"strings"
 	"time"
@@ -53,19 +54,19 @@ func parsePackage(data string) (int, time.Duration, error) {
 func DayActionInfo(data string, weight, height float64) string {
 	steps, duration, err := parsePackage(data)
 	if err != nil {
-		fmt.Println("Ошибка парсинга программы", err)
+		log.Println("Ошибка парсинга программы", err)
 		return ""
 	}
 	// не особо понимаю зачем вторая проверка на шаги
 	if steps <= 0 {
-		fmt.Println("Ошибка колличества шагов", ErrNegativeSteps)
+		log.Println("Ошибка колличества шагов", ErrNegativeSteps)
 		return ""
 	}
 	distanceM := float64(steps) * stepLength
 	distanceKm := distanceM / mInKm
 	calories, err := sc.WalkingSpentCalories(steps, weight, height, duration)
 	if err != nil {
-		fmt.Println("Ошибка вычисления затраченных калорий", err)
+		log.Println("Ошибка вычисления затраченных калорий", err)
 		return ""
 	}
 	answer := fmt.Sprintf("Количество шагов: %d.\nДистанция составила %.2f км.\nВы сожгли %.2f ккал.\n",
