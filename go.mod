@@ -1,4 +1,4 @@
-module github.com/Yandex-Practicum/tracker
+module github.com/dmitry-konchenko/go-first-floor-sprint-four
 
 go 1.24.1
 
